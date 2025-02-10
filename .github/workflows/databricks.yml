@@ -37,5 +37,6 @@ jobs:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         run: |
           # run_tests.sh
-          databricks fs cp tests/integration_test.py dbfs:/tests/integration_test.py
+          databricks fs cp tests/integration_test.py dbfs:/Workspace/Users/keshavchaudhary940@gmail.com/tests/integration_test.py
+          
           databricks jobs run-now --job-id 631885859803942
