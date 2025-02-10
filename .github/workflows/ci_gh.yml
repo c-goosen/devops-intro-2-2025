@@ -1,0 +1,47 @@
+name: gh actions CI
+
+on:
+  push:
+    branches: [dev, test, main]
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 6
+      matrix:
+        python-version: ['3.9', '3.10', '3.11', '3.12', '3.13']
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Upgrade pip
+        run: python3 -m pip install --upgrade pip setuptools wheel black flake8 bandit
+
+      - name: Verify code has been formatted with Black
+        run: poetry run black . --check
+
+      - name: Code Static Analysis
+        run: poetry run flake8
+
+      - name: Run Bandit Static Security Analysis
+        run: bandit -r .
+
+#      - name: Run Snyk to check for vulnerabilities
+#        uses: snyk/actions/python@master
+#        env:
+#          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+#        with:
+#          args: --severity-threshold=high --file=pyproject.toml
+
+      # - name: Run Unit test
+      #   run: python tests/
