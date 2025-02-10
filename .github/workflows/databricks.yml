@@ -28,3 +28,17 @@ jobs:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         run: |
           databricks repos list
+          
+      - name: Upload tests and run jobs
+        env:
+          # Note the host is an "environment variable" in the Github Environment
+          # while the token is a "secret" in the Github Environment
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        run: |
+          # run_tests.sh
+          databricks fs cp tests/test_sample_data_cleaning.py dbfs:/tests/test_sample_data_cleaning.py
+          databricks fs cp tests/integration_test.py dbfs:/tests/integration_test.py
+          
+          databricks jobs run-now --job-id <job-id-for-unit-tests>
+          databricks jobs run-now --job-id <job-id-for-integration-tests>
