@@ -36,7 +36,7 @@ jobs:
         run: flake8
 
       - name: Run Bandit Static Security Analysis
-        run: bandit -r . --skip B311 B101
+        run: bandit -r . --skip B311,B101
 
 #      - name: Run Snyk to check for vulnerabilities
 #        uses: snyk/actions/python@master
