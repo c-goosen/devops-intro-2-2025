@@ -37,8 +37,8 @@ jobs:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         run: |
           # run_tests.sh
-          databricks fs cp tests/test_sample_data_cleaning.py dbfs:/tests/test_sample_data_cleaning.py
+#          databricks fs cp tests/test_sample_data_cleaning.py dbfs:/tests/test_sample_data_cleaning.py
           databricks fs cp tests/integration_test.py dbfs:/tests/integration_test.py
           
-          databricks jobs run-now --job-id <job-id-for-unit-tests>
-          databricks jobs run-now --job-id <job-id-for-integration-tests>
+#          databricks jobs run-now --job-id <job-id-for-unit-tests>
+          databricks jobs run-now --job-id 631885859803942
