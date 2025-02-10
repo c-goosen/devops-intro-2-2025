@@ -1,5 +1,10 @@
 name: databricks-cicd
-...
+on:
+  push:
+    branches: [dev, test, main]
+  pull_request:
+    branches:
+      - '*'
 jobs:
   main:
     runs-on: ubuntu-latest
