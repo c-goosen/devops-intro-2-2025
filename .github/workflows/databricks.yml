@@ -38,4 +38,5 @@ jobs:
         run: |
           # run_tests.sh
           # databricks fs cp tests/integration_test.py dbfs:/Users/keshavchaudhary940@gmail.com/tests/integration_test.py
-          databricks jobs run-now --job-id 631885859803942
+          # databricks jobs run-now --job-id 631885859803942
+          databricks jobs run-now 631885859803942
