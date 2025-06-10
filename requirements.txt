@@ -36,7 +36,7 @@ pip-system-certs==4.0
 protobuf==4.25.5
 Pygments==2.19.1
 referencing==0.35.1
-requests==2.32.3
+requests==2.32.4
 rich==13.5.3
 rpds-py==0.22.3
 ruamel.yaml==0.18.10
