@@ -33,7 +33,7 @@ opentelemetry-util-http==0.46b0
 packaging==24.2
 peewee==3.17.8
 pip-system-certs==4.0
-protobuf==4.25.5
+protobuf==4.25.8
 Pygments==2.19.1
 referencing==0.35.1
 requests==2.32.3
